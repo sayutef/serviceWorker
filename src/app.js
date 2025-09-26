@@ -1,4 +1,3 @@
-// app.js
 const CACHE_VERSION = 'v1';
 const breadListEl = document.getElementById('breadList');
 const form = document.getElementById('formAdd');
@@ -10,16 +9,16 @@ render();
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Previene que Chrome muestre el prompt automáticamente
+  
   e.preventDefault();
   deferredPrompt = e;
 
-  // Muestra tu botón de instalar
+  
   const installBtn = document.getElementById('installBtn');
   if (installBtn) installBtn.style.display = 'block';
 });
 
-// Cuando el usuario hace clic en tu botón de instalar
+
 const installBtn = document.getElementById('installBtn');
 if (installBtn) {
   installBtn.addEventListener('click', async () => {
@@ -27,7 +26,7 @@ if (installBtn) {
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     console.log('[app] Resultado instalación PWA:', outcome);
-    deferredPrompt = null; // ya no se puede usar otra vez
+    deferredPrompt = null; 
   });
 }
 
@@ -58,7 +57,7 @@ pingWorkerBtn.addEventListener('click', async () => {
     return;
   }
   const sw = navigator.serviceWorker.controller;
-  // Enviar mensaje con un límite para el ejemplo (usa tu ejemplo)
+  
   const msg = { type: 'GENERATE_NUMBER', limite: '1000' };
   const msgChannel = new MessageChannel();
   msgChannel.port1.onmessage = (ev) => {
@@ -100,7 +99,7 @@ enableBtn.addEventListener('click', () => {
 
     if (permission === 'granted') {
       alert('¡Gracias! Ahora recibirás notificaciones de la panadería.');
-      // Aquí puedes suscribir al usuario a push si quieres
+      
     } else if (permission === 'denied') {
       alert('Has bloqueado las notificaciones. Puedes habilitarlas desde la configuración del navegador.');
     } else {
@@ -118,12 +117,11 @@ if ('serviceWorker' in navigator) {
       const reg = await navigator.serviceWorker.register('/service-worker.js');
       console.log('[app] Service Worker registrado:', reg);
 
-      // si hay un SW esperando, puedes notificar al usuario
+     
       if (reg.waiting) {
         console.log('[app] SW en espera (waiting). Posible nueva versión.');
       }
 
-      // muestra updates en consola
       reg.addEventListener('updatefound', () => {
         console.log('[app] updatefound: nueva versión del SW detectada');
         const newSW = reg.installing;
@@ -132,7 +130,6 @@ if ('serviceWorker' in navigator) {
         });
       });
 
-      // Para que la pagina controle al SW inmediatamente (si ya hay controlador)
       if (navigator.serviceWorker.controller) {
         console.log('[app] Hay controlador activo.');
       }
@@ -141,7 +138,7 @@ if ('serviceWorker' in navigator) {
     }
   });
 
-  // opcional: escucha mensajes del SW (si envía)
+
   navigator.serviceWorker.addEventListener('message', (ev) => {
     console.log('[app] Mensaje recibido del SW (global):', ev.data);
   });

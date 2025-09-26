@@ -1,4 +1,3 @@
-// service-worker.js
 const CACHE_NAME = 'propan-static-v1';
 const RUNTIME = 'propan-runtime';
 const PRECACHE_URLS = [
