@@ -1,0 +1,33 @@
+{
+  "name": "proPAN - Panadería",
+  "short_name": "proPAN",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff8f0",
+  "theme_color": "#b34120",
+  "icons": [
+    {
+      "src": "/images/pan1.png",
+      "sizes": "360x360",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/pan2.png",
+      "sizes": "325x325",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/pan1.png",
+      "sizes": "360x360",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/pan2.png",
+      "sizes": "325x325",
+      "type": "image/png"
+    }
+  ]
+}
